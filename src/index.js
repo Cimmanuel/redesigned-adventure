@@ -16,8 +16,21 @@ const message = 'Welcome!'
 io.on('connection', (socket) => {
     console.log('New WebSocket Connection')
     socket.emit('message', message)
+    socket.broadcast.emit('message', 'A new user joined the room')
+
+    // Listen for message from the client (form field)
     socket.on('sendMessage', (message) => {
         io.emit('message', message)
+    })
+    
+    // Listen for location from client
+    socket.on('sendLocation', ({latitude, longitude} = {}) => {
+        io.emit('message', `https://google.com/maps?q=${latitude},${longitude}`)
+    })
+    
+    // Disconnect 
+    socket.on('disconnect', () => {
+        io.emit('message', 'A user left the room')
     })
 })
 
