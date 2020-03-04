@@ -6,12 +6,29 @@
     </head>
     <body>
         <h1>My Chat App</h1>
+
+        <div id="messages"></div>
+
         <form id="message-form">
             <input type="text" name="message" placeholder="Type a message">
             <button>Send</button>
         </form>
         <button id="send-location">Send Location</button>
 
+        <script id="message-template" type="text/html">
+            <div>
+                <p>{{ message }}</p>
+            </div>
+        </script>
+        <script id="location-message-template" type="text/html">
+            <div>
+                <p><a href={{ mapsURL }} target="_blank">My current location</a></p>
+            </div>
+        </script>
+
+        <script src="/js/mustache.min.js"></script>
+        <script src="/js/moment.min.js"></script>
+        <script src="/js/qs.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="/js/chat.js"></script>
     </body>
