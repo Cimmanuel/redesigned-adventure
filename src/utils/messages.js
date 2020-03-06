@@ -1,14 +1,14 @@
-const generateMessageObject = (text) => {
+const generateMessageObject = (text, username='Admin') => {
     const messageObject = {
-        text,
+        text, username,
         createdAt: new Date().getTime()
     }
     return messageObject
 }
 
-const generateLocationMessageObject = (url) => {
+const generateLocationMessageObject = (url, username='Admin') => {
     const locationMessageObject = {
-        url,
+        url, username,
         createdAt: new Date().getTime()
     }
     return locationMessageObject
